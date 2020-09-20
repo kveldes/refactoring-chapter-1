@@ -65,6 +65,25 @@ public class CustomerTest {
                 "Stelios\n\tLion King\t4.5\nAmount owed is 4.5\nYou earned 1 " +
                 "frequent renter points"));
     }
+    
+    @Test
+    public void rent_no_movies() {
+    	assertThat(customer.statement(), is("Rental Record for Stelios\nAmount owed is 0.0\nYou earned 0 frequent renter points"));
+    } 
+    
+    @Test
+    public void when_renting_regular_movie_for_one_day_then_statement_has_2_price_and_1_credit() {
+    	customer.addRental(getGodFatherRental(1));
+    	
+    	assertThat(customer.statement(), is("Rental Record for Stelios\n\tThe Godfather\t2.0\nAmount owed is 2.0\nYou earned 1 frequent renter points"));
+    }
+    
+    @Test
+    public void when_renting_a_new_release_for_1_day_then_statement_has_3_price_and_1_credit() {
+    	customer.addRental(getInterstellarRentalFor(1));
+    	
+    	assertThat(customer.statement(), is("Rental Record for Stelios\n\tInterstellar\t3.0\nAmount owed is 3.0\nYou earned 1 frequent renter points"));
+    }
 
     @Test
     public void when_renting_all_types_of_movies() {
@@ -75,7 +94,7 @@ public class CustomerTest {
         assertThat(customer.statement(), is("Rental Record for " +
                 "Stelios\n\tInterstellar\t9.0\n\tLion King\t4.5\n\tThe " +
                 "Godfather\t6.5\nAmount owed is 20.0\nYou earned 4 frequent " +
-                "renter points"));
+        		"renter points"));
 
     }
 
