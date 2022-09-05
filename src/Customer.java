@@ -3,11 +3,11 @@ import java.util.Vector;
 
 class Customer {
 
-	private String _name;
+	private String name;
 	private Vector _rentals = new Vector();
 
 	public Customer(String name) {
-		_name = name;
+		this.name = name;
 	}
 
 	public void addRental(Rental arg) {
@@ -15,7 +15,7 @@ class Customer {
 	}
 
 	public String getName() {
-		return _name;
+		return this.name;
 	}
 
 	public String statement() {
