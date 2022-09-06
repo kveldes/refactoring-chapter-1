@@ -39,7 +39,6 @@ class Customer {
 
 	private double processingAmmountForEachRental(Rental eachRental) {
 		double processingAmount = 0;
-//		switch (eachRental.getMovie().getPriceCode()) {
 		switch (eachRental.getPriceCode()) {
 		case Movie.REGULAR: // case 0
 			processingAmount += 2;
