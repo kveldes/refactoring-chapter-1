@@ -7,6 +7,7 @@ class Customer {
 	private String customerName;
 	private Vector _rentals = new Vector();
 
+
 	public Customer(String customerName) {
 		this.customerName = customerName;
 	}
@@ -50,16 +51,21 @@ class Customer {
 			// add frequent renter points
 			frequentRenterPoints++;
 
+
 			// add bonus for a two day new release rental
 			if (eachRental.getMovie().getPriceCode() == Movie.NEW_RELEASE && eachRental.getDaysRented() > 1)
 				frequentRenterPoints++;
 
-			// show figures for this rental
-			resultStatement += "\t" + eachRental.getMovie().getTitle() + "\t" + String.valueOf(processingAmount) + "\n";
+			resultStatement = showingFiguresForThisRental(resultStatement, processingAmount, eachRental);
 			totalAmount += processingAmount;
 		}
 
-		return addingFooterLines(totalAmount, frequentRenterPoints, resultStatement);
+		return resultStatement = addingFooterLines(totalAmount, frequentRenterPoints, resultStatement);
+	}
+
+	private String showingFiguresForThisRental(String resultStatement, double processingAmount, Rental eachRental) {
+		return resultStatement += String.format(Locale.US, "\t%s\t%.1f\n", eachRental.getMovie().getTitle(),
+				processingAmount);
 	}
 
 	private String addingFooterLines(double totalAmount, int frequentRenterPoints, String resultStatement) {
@@ -67,6 +73,7 @@ class Customer {
 		resultStatement += String.format("You earned %d frequent renter points", frequentRenterPoints);
 		return resultStatement;
 	}
+
 
 
 }
