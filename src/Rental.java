@@ -28,4 +28,8 @@ class Rental {
 	public int getRentalPoints() {
 		return this.frequentRenterPoints;
 	}
+
+	public int getPriceCode() {
+		return getMovie().getPriceCode();
+	}
 }

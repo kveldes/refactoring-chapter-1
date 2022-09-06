@@ -26,26 +26,8 @@ class Customer {
 
 		String resultStatement = String.format("Rental Record for %s\n", getName());
 
-
 		for (Rental eachRental : rentals) {
-			double processingAmount = 0;
-			// determine amounts for each line
-			switch (eachRental.getMovie().getPriceCode()) {
-			case Movie.REGULAR: // case 0
-				processingAmount += 2;
-				if (eachRental.getDaysRented() > 2)
-					processingAmount += (eachRental.getDaysRented() - 2) * 1.5;
-				break;
-			case Movie.NEW_RELEASE: // case 1
-				processingAmount += eachRental.getDaysRented() * 3;
-				break;
-			case Movie.CHILDRENS: // case 2
-				processingAmount += 1.5;
-				if (eachRental.getDaysRented() > 3)
-					processingAmount += (eachRental.getDaysRented() - 3) * 1.5;
-				break;
-			}
-
+			double processingAmount = processingAmmountForEachRental(eachRental);
 			eachRental.setRentalPoints(frequentRenterPoints, eachRental);
 			frequentRenterPoints = eachRental.getRentalPoints();
 			resultStatement = showingFiguresForThisRental(resultStatement, processingAmount, eachRental);
@@ -53,6 +35,27 @@ class Customer {
 		}
 
 		return resultStatement = addingFooterLines(totalAmount, frequentRenterPoints, resultStatement);
+	}
+
+	private double processingAmmountForEachRental(Rental eachRental) {
+		double processingAmount = 0;
+//		switch (eachRental.getMovie().getPriceCode()) {
+		switch (eachRental.getPriceCode()) {
+		case Movie.REGULAR: // case 0
+			processingAmount += 2;
+			if (eachRental.getDaysRented() > 2)
+				processingAmount += (eachRental.getDaysRented() - 2) * 1.5;
+			break;
+		case Movie.NEW_RELEASE: // case 1
+			processingAmount += eachRental.getDaysRented() * 3;
+			break;
+		case Movie.CHILDRENS: // case 2
+			processingAmount += 1.5;
+			if (eachRental.getDaysRented() > 3)
+				processingAmount += (eachRental.getDaysRented() - 3) * 1.5;
+			break;
+		}
+		return processingAmount;
 	}
 
 	private String showingFiguresForThisRental(String resultStatement, double processingAmount, Rental eachRental) {
