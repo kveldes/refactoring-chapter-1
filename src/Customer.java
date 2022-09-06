@@ -49,7 +49,6 @@ class Customer {
 			}
 
 			frequentRenterPoints = addingRentingPoints(frequentRenterPoints, eachRental);
-
 			resultStatement = showingFiguresForThisRental(resultStatement, processingAmount, eachRental);
 			totalAmount += processingAmount;
 		}
@@ -60,7 +59,7 @@ class Customer {
 	private int addingRentingPoints(int frequentRenterPoints, Rental eachRental) {
 		// Common case
 		frequentRenterPoints++;
-		// Bonus case is it exist
+		// Bonus case if it exist
 		if (eachRental.getMovie().getPriceCode() == Movie.NEW_RELEASE && eachRental.getDaysRented() > 1)
 			frequentRenterPoints++;
 		return frequentRenterPoints;
