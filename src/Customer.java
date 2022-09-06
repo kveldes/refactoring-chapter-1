@@ -27,9 +27,8 @@ class Customer {
 		String resultStatement = String.format("Rental Record for %s\n", getName());
 
 
-		for (int i = 0; i < rentals.size(); i++) {
+		for (Rental eachRental : rentals) {
 			double processingAmount = 0;
-			Rental eachRental = rentals.get(i);
 			// determine amounts for each line
 			switch (eachRental.getMovie().getPriceCode()) {
 			case Movie.REGULAR: // case 0
