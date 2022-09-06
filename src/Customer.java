@@ -56,11 +56,10 @@ class Customer {
 	}
 
 	private int addingRentingPoints(int frequentRenterPoints, Rental eachRental) {
-		// Common case
 		frequentRenterPoints++;
-		// Bonus case if it exist
-		if (eachRental.getMovie().getPriceCode() == Movie.NEW_RELEASE && eachRental.getDaysRented() > 1)
+		if (eachRental.getMovie().getPriceCode() == Movie.NEW_RELEASE && eachRental.getDaysRented() > 1) {
 			frequentRenterPoints++;
+		} 
 		return frequentRenterPoints;
 	}
 
