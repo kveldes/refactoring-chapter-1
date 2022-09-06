@@ -47,7 +47,7 @@ class Customer {
 				break;
 			}
 
-			frequentRenterPoints = addingRentingPoints(frequentRenterPoints, eachRental);
+			frequentRenterPoints = addingRentalPoints(frequentRenterPoints, eachRental);
 			resultStatement = showingFiguresForThisRental(resultStatement, processingAmount, eachRental);
 			totalAmount += processingAmount;
 		}
@@ -55,7 +55,7 @@ class Customer {
 		return resultStatement = addingFooterLines(totalAmount, frequentRenterPoints, resultStatement);
 	}
 
-	private int addingRentingPoints(int frequentRenterPoints, Rental eachRental) {
+	private int addingRentalPoints(int frequentRenterPoints, Rental eachRental) {
 		frequentRenterPoints++;
 		if (eachRental.getMovie().getPriceCode() == Movie.NEW_RELEASE && eachRental.getDaysRented() > 1) {
 			frequentRenterPoints++;
