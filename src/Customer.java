@@ -47,7 +47,6 @@ class Customer {
 				break;
 			}
 
-			// frequentRenterPoints = addingRentalPoints(frequentRenterPoints, eachRental);
 			eachRental.setRentalPoints(frequentRenterPoints, eachRental);
 			frequentRenterPoints = eachRental.getRentalPoints();
 			resultStatement = showingFiguresForThisRental(resultStatement, processingAmount, eachRental);
