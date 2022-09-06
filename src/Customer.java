@@ -48,19 +48,22 @@ class Customer {
 				break;
 			}
 
-			// add frequent renter points
-			frequentRenterPoints++;
-
-
-			// add bonus for a two day new release rental
-			if (eachRental.getMovie().getPriceCode() == Movie.NEW_RELEASE && eachRental.getDaysRented() > 1)
-				frequentRenterPoints++;
+			frequentRenterPoints = addingRentingPoints(frequentRenterPoints, eachRental);
 
 			resultStatement = showingFiguresForThisRental(resultStatement, processingAmount, eachRental);
 			totalAmount += processingAmount;
 		}
 
 		return resultStatement = addingFooterLines(totalAmount, frequentRenterPoints, resultStatement);
+	}
+
+	private int addingRentingPoints(int frequentRenterPoints, Rental eachRental) {
+		// Common case
+		frequentRenterPoints++;
+		// Bonus case is it exist
+		if (eachRental.getMovie().getPriceCode() == Movie.NEW_RELEASE && eachRental.getDaysRented() > 1)
+			frequentRenterPoints++;
+		return frequentRenterPoints;
 	}
 
 	private String showingFiguresForThisRental(String resultStatement, double processingAmount, Rental eachRental) {
