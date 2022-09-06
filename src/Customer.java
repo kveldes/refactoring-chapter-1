@@ -4,7 +4,7 @@ import java.util.Locale;
 class Customer {
 
 	private String customerName;
-	ArrayList<Rental> _rentals = new ArrayList<Rental>();
+	ArrayList<Rental> rentals = new ArrayList<Rental>();
 
 
 	public Customer(String customerName) {
@@ -12,7 +12,7 @@ class Customer {
 	}
 
 	public void addRental(Rental newRental) {
-		_rentals.add(newRental);
+		rentals.add(newRental);
 
 	}
 
@@ -27,9 +27,9 @@ class Customer {
 		String resultStatement = String.format("Rental Record for %s\n", getName());
 
 
-		for (int i = 0; i < _rentals.size(); i++) {
+		for (int i = 0; i < rentals.size(); i++) {
 			double processingAmount = 0;
-			Rental eachRental = _rentals.get(i);
+			Rental eachRental = rentals.get(i);
 			// determine amounts for each line
 			switch (eachRental.getMovie().getPriceCode()) {
 			case Movie.REGULAR: // case 0
