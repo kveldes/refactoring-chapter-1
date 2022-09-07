@@ -24,7 +24,7 @@ class Customer {
 		BigDecimal totalAmount = new BigDecimal("0");
 		int frequentRenterPoints = 0;
 
-		String resultStatement = String.format("Rental Record for %s\n", getName());
+		String resultStatement = addingHeaderLines();
 
 		for (Rental eachRental : rentals) {
 			BigDecimal processingAmount = new BigDecimal(processingAmmountForEachRental(eachRental));
@@ -35,6 +35,10 @@ class Customer {
 		}
 
 		return resultStatement = addingFooterLines(totalAmount, frequentRenterPoints, resultStatement);
+	}
+
+	private String addingHeaderLines() {
+		return String.format("Rental Record for %s\n", getName());
 	}
 
 	private double processingAmmountForEachRental(Rental eachRental) {
