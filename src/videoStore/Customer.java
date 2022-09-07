@@ -1,3 +1,4 @@
+package videoStore;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Locale;

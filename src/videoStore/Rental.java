@@ -1,3 +1,4 @@
+package videoStore;
 class Rental {
 
 	private Movie movie;
