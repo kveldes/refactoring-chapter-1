@@ -1,4 +1,5 @@
 package videoStore;
+
 public class Movie {
 
     public static final int CHILDRENS = 2;
@@ -23,5 +24,9 @@ public class Movie {
     public String getTitle() {
 		return this.title;
     }
+
+	public double calculateAmount() {
+		return 0;
+	}
 
 }

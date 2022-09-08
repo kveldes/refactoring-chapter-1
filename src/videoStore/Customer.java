@@ -43,23 +43,7 @@ class Customer {
 	}
 
 	private double processingAmmountForEachRental(Rental eachRental) {
-		double processingAmount = 0;
-		switch (eachRental.getPriceCode()) {
-		case Movie.REGULAR: // case 0
-			processingAmount += 2;
-			if (eachRental.getDaysRented() > 2)
-				processingAmount += (eachRental.getDaysRented() - 2) * 1.5;
-			break;
-		case Movie.NEW_RELEASE: // case 1
-			processingAmount += eachRental.getDaysRented() * 3;
-			break;
-		case Movie.CHILDRENS: // case 2
-			processingAmount += 1.5;
-			if (eachRental.getDaysRented() > 3)
-				processingAmount += (eachRental.getDaysRented() - 3) * 1.5;
-			break;
-		}
-		return processingAmount;
+		return eachRental.processingAmmount(eachRental);
 	}
 
 	private String showingFiguresForThisRental(String resultStatement, BigDecimal processingAmount, Rental eachRental) {

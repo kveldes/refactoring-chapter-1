@@ -9,4 +9,8 @@ public class NewReleaseMovie extends Movie {
 
 	}
 
+	public double calculateAmount() {
+		return 0;
+	}
+
 }
