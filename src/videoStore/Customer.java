@@ -43,7 +43,7 @@ class Customer {
 	}
 
 	private double processingAmmountForEachRental(Rental eachRental) {
-		return eachRental.processingAmmount(eachRental);
+		return eachRental.processingAmmount();
 	}
 
 	private String showingFiguresForThisRental(String resultStatement, BigDecimal processingAmount, Rental eachRental) {

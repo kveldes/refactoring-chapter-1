@@ -34,24 +34,26 @@ class Rental {
 		return getMovie().getPriceCode();
 	}
 
-	public double processingAmmount(Rental eachRental) {
+
+	public double processingAmmount() {
 		double processingAmount = 0;
 
-		switch (eachRental.getPriceCode()) {
-		case Movie.REGULAR: // case 0
+		switch (getPriceCode()) {
+		case Movie.REGULAR:
 			processingAmount = 2;
-			if (eachRental.getDaysRented() > 2)
-				processingAmount += (eachRental.getDaysRented() - 2) * 1.5;
+			if (daysRented > 2)
+				processingAmount += (daysRented - 2) * 1.5;
 			break;
-		case Movie.NEW_RELEASE: // case 1
-			processingAmount = eachRental.getDaysRented() * 3;
+		case Movie.NEW_RELEASE:
+			processingAmount = daysRented * 3;
 			break;
-		case Movie.CHILDRENS: // case 2
+		case Movie.CHILDRENS:
 			processingAmount += 1.5;
-			if (eachRental.getDaysRented() > 3)
-				processingAmount += (eachRental.getDaysRented() - 3) * 1.5;
+			if (daysRented > 3)
+				processingAmount += (daysRented - 3) * 1.5;
 			break;
 		}
 		return processingAmount;
 	}
+
 }
