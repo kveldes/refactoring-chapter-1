@@ -36,24 +36,7 @@ class Rental {
 
 
 	public double processingAmmount() {
-		double processingAmount = 0;
-
-		switch (getPriceCode()) {
-		case Movie.REGULAR:
-			processingAmount = 2;
-			if (daysRented > 2)
-				processingAmount += (daysRented - 2) * 1.5;
-			break;
-		case Movie.NEW_RELEASE:
-			processingAmount = daysRented * 3;
-			break;
-		case Movie.CHILDRENS:
-			processingAmount += 1.5;
-			if (daysRented > 3)
-				processingAmount += (daysRented - 3) * 1.5;
-			break;
-		}
-		return processingAmount;
+		return getMovie().processingAmmount(getDaysRented());
 	}
 
 }

@@ -1,11 +1,13 @@
 package videoStore;
-import static org.junit.Assert.*;
-import org.junit.Test;
-import org.junit.Before;
-
-
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
+
+import org.junit.Before;
+import org.junit.Test;
+
+import videoStoreMovies.ChildrenMovie;
+import videoStoreMovies.NewReleaseMovie;
+import videoStoreMovies.RegularMovie;
 
 public class CustomerTest {
 
@@ -30,8 +32,7 @@ public class CustomerTest {
     public void
     when_renting_two_new_movie_for_3_and_4_days_respectively_then_statement_has_21_price_and_4_credits() throws Exception {
         customer.addRental(getInterstellarRentalFor(3));
-        Rental judgeRental = new Rental(new Movie("The Judge", Movie
-                .NEW_RELEASE), 4);
+		Rental judgeRental = new Rental(new NewReleaseMovie("The Judge"), 4);
         customer.addRental(judgeRental);
 
         assertThat(customer.statement(), is("Rental Record for " +
@@ -102,15 +103,15 @@ public class CustomerTest {
     }
 
     private Rental getInterstellarRentalFor(int daysRented) {
-        return new Rental(new Movie("Interstellar", Movie.NEW_RELEASE), daysRented);
+		return new Rental(new NewReleaseMovie("Interstellar"), daysRented);
     }
 
     private Rental getLionKingRental(int daysRented) {
-        return new Rental(new Movie("Lion King", Movie.CHILDRENS), daysRented);
+		return new Rental(new ChildrenMovie("Lion King"), daysRented);
     }
 
     private Rental getGodFatherRental(int daysRented) {
-        return new Rental(new Movie("The Godfather", Movie.REGULAR), daysRented);
+		return new Rental(new RegularMovie("The Godfather"), daysRented);
     }
 
 }

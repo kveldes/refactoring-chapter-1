@@ -4,13 +4,15 @@ import videoStore.Movie;
 
 public class NewReleaseMovie extends Movie {
 
-	public NewReleaseMovie(String title, int priceCode) {
-		super(title, priceCode);
+	public NewReleaseMovie(String title) {
+		super(title, 0);
 
 	}
 
-	public double calculateAmount() {
-		return 0;
+	@Override
+	public double processingAmmount(int daysRented) {
+		return daysRented * 3;
 	}
+
 
 }
