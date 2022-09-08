@@ -11,7 +11,8 @@ public class NewReleaseMovie extends Movie {
 
 	@Override
 	public double processingAmmount(int daysRented) {
-		return daysRented * 3;
+//		double processingAmount = 0;
+		return (double) daysRented * 3;
 	}
 
 

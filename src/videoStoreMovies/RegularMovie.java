@@ -11,6 +11,7 @@ public class RegularMovie extends Movie {
 
 	@Override
 	public double processingAmmount(int daysRented) {
+		// double processingAmount = 0;
 		double processingAmount = 2;
 		if (daysRented > 2)
 			processingAmount += (daysRented - 2) * 1.5;
